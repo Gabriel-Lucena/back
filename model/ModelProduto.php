@@ -24,4 +24,17 @@ class ModelProduto
         $this->_descricao = $dadosProduto->descricao;
         $this->_conexao = $conexao;
     }
+
+    public function findAll()
+    {
+        // Montagem do script SQL
+
+        $sql = "SELECT * FROM tblProduto WHERE idProduto = ?";
+
+        $stm = $this->_conexao->prepare($sql);
+        $stm->bindValue(1, $this->_idProduto);
+        $stm->execute();
+
+        return $stm->fetchAll(\PDO::FETCH_ASSOC);
+    }
 }
