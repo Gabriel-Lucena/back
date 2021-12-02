@@ -3,7 +3,7 @@
 class Connection
 {
     private $_dbHostname = "127.0.0.1";
-    private $_dbName = "";
+    private $_dbName = "dba";
     private $_userName = "root";
     private $_dbPassword = "bcd127";
     private $_conexao;

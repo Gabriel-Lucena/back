@@ -21,7 +21,7 @@ class ControllerProduto
     function router()
     {
 
-        switch ($$this->_method) {
+        switch ($this->_method) {
             case 'GET':
 
                 if (isset($this->_idProduto)) {
