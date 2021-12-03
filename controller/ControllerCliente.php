@@ -36,6 +36,12 @@ class ControllerCliente
 
                 break;
 
+            case 'POST':
+
+                return $this->_modelCliente->create();
+
+                break;
+
             default:
 
                 break;

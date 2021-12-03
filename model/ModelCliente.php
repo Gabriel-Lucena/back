@@ -54,4 +54,36 @@ class ModelCliente
 
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+    public function create()
+    {
+
+        $sql = "INSERT INTO tblCliente (nome,
+                                        sobrenome,
+                                        email,
+                                        dataNascimento,
+                                        cpf,
+                                        telefone) VALUES (
+                                        ?,
+                                        ?,
+                                        ?,
+                                        ?,
+                                        ?,
+                                        ?)";
+
+        $stm = $this->_conexao->prepare($sql);
+
+        $stm->bindValue(1, $this->_nome);
+        $stm->bindValue(2, $this->_sobrenome);
+        $stm->bindValue(3, $this->_email);
+        $stm->bindValue(4, $this->_dataNascimento);
+        $stm->bindValue(5, $this->_cpf);
+        $stm->bindValue(6, $this->_telefone);
+
+        if ($stm->execute()) {
+            return "Success";
+        } else {
+            return "Error";
+        }
+    }
 }
