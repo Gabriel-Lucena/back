@@ -70,4 +70,20 @@ class ModelProduto
             return "Error";
         }
     }
+
+    public function delete()
+    {
+        $sql = "DELETE FROM tblProduto WHERE idProduto = ?";
+
+        $stm = $this->_conexao->prepare($sql);
+        $stm->bindValue(1, $this->_idProduto);
+
+        if ($stm->execute()) {
+
+            return "Dados excluídos com sucesso!";
+        } else {
+
+            return "Ocorreu algum erro.";
+        }
+    }
 }

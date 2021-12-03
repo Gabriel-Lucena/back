@@ -39,6 +39,12 @@ class ControllerProduto
 
                 break;
 
+            case 'DELETE':
+
+                return $this->_modelProduto->delete();
+                
+                break;
+
             default:
                 # code...
                 break;
