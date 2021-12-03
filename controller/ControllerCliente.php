@@ -48,6 +48,11 @@ class ControllerCliente
 
                 break;
 
+            case 'PUT':
+
+                return $this->_modelCliente->update();
+
+                break;
             default:
 
                 break;

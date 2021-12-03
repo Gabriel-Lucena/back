@@ -100,4 +100,32 @@ class ModelCliente
             return "Ocorreu algum erro.";
         }
     }
+
+    public function update()
+    {
+        $sql = "UPDATE tblCliente SET
+        nome = ?,
+        sobrenome = ?,
+        email = ?,
+        dataNascimento = ?,
+        cpf = ?,
+        telefone =?";
+
+        $stm = $this->_conexao->prepare($sql);
+
+        $stm->bindValue(1, $this->_nome);
+        $stm->bindValue(2, $this->_sobrenome);
+        $stm->bindValue(3, $this->_email);
+        $stm->bindValue(4, $this->_dataNascimento);
+        $stm->bindValue(5, $this->_cpf);
+        $stm->bindValue(6, $this->_telefone);
+
+        if ($stm->execute()) {
+
+            return "Dados alterados com sucesso!";
+        } else {
+
+            return "Ocorreu algum erro.";
+        }
+    }
 }
