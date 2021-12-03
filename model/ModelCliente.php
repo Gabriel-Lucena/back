@@ -109,7 +109,8 @@ class ModelCliente
         email = ?,
         dataNascimento = ?,
         cpf = ?,
-        telefone =?";
+        telefone =?
+        WHERE idCliente = ?";
 
         $stm = $this->_conexao->prepare($sql);
 
@@ -119,6 +120,7 @@ class ModelCliente
         $stm->bindValue(4, $this->_dataNascimento);
         $stm->bindValue(5, $this->_cpf);
         $stm->bindValue(6, $this->_telefone);
+        $stm->bindValue(7, $this->_idCliente);
 
         if ($stm->execute()) {
 
