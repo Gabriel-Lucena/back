@@ -37,7 +37,8 @@ class ModelProduto
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    public function findById() {
+    public function findById()
+    {
 
         $sql = "SELECT * FROM tblProduto WHERE idProduto = ?";
 
@@ -46,5 +47,27 @@ class ModelProduto
         $stm->execute();
 
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function create()
+    {
+
+        $sql = "INSERT INTO tblProduto (nome,
+                                        valor, 
+                                        descricao) VALUES (
+                                        ?,
+                                        ?,
+                                        ?)";
+        $stm = $this->_conexao->prepare($sql);
+
+        $stm->bindValue(1, $this->_nome);
+        $stm->bindValue(2, $this->_valor);
+        $stm->bindValue(3, $this->_descricao);
+
+        if ($stm->execute()) {
+            return "Success";
+        } else {
+            return "Error";
+        }
     }
 }
