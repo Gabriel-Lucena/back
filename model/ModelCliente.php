@@ -43,4 +43,15 @@ class ModelCliente
 
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+    public function findById()
+    {
+        $sql = "SELECT * FROM tblCliente WHERE idCliente = ?";
+
+        $stm = $this->_conexao->prepare($sql);
+        $stm->bindValue(1, $this->_idCliente);
+        $stm->execute();
+
+        return $stm->fetchAll(\PDO::FETCH_ASSOC);
+    }
 }
