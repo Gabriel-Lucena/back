@@ -42,6 +42,12 @@ class ControllerCliente
 
                 break;
 
+            case 'DELETE':
+
+                return $this->_modelCliente->delete();
+
+                break;
+
             default:
 
                 break;

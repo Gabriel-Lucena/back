@@ -86,4 +86,18 @@ class ModelCliente
             return "Error";
         }
     }
+
+    public function delete()
+    {
+        $sql = "DELETE FROM tblCliente WHERE idCliente = ?";
+
+        $stm = $this->_conexao->prepare($sql);
+        $stm->bindValue(1, $this->_idCliente);
+
+        if ($stm->execute()) {
+            return "Dados excluídos com sucesso!";
+        } else {
+            return "Ocorreu algum erro.";
+        }
+    }
 }
