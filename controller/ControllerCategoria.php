@@ -40,6 +40,12 @@ class ControllerCategoria
 
                 break;
 
+            case 'DELETE':
+
+                return $this->_modelCategoria->delete();
+
+                break;
+
             default:
 
                 break;

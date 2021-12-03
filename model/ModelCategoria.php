@@ -60,4 +60,18 @@ class ModelCategoria
             return "Error";
         }
     }
+
+    public function delete()
+    {
+        $sql = "DELETE FROM tblCategoria WHERE idCategoria = ?";
+
+        $stm = $this->_conexao->prepare($sql);
+        $stm->bindValue(1, $this->_idCategoria);
+
+        if ($stm->execute()) {
+            return "Dados excluídos com sucesso!";
+        } else {
+            return "Ocorreu algum erro.";
+        }
+    }
 }
