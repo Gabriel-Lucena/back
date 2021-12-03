@@ -86,4 +86,29 @@ class ModelProduto
             return "Ocorreu algum erro.";
         }
     }
+
+    public function update()
+    {
+
+        $sql = "UPDATE tblProduto SET
+        nome = ?,
+        valor = ?,
+        descricao = ?
+        WHERE idProduto = ?";
+
+        $stm = $this->_conexao->prepare($sql);
+
+        $stm->bindValue(1, $this->_nome);
+        $stm->bindValue(2, $this->_valor);
+        $stm->bindValue(3, $this->_descricao);
+        $stm->bindValue(4, $this->_idProduto);
+
+        if ($stm->execute()) {
+
+            return "Dados alterados com sucesso!";
+        } else {
+
+            return "Ocorreu algum erro.";
+        }
+    }
 }

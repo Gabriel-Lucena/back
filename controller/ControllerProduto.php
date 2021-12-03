@@ -42,9 +42,14 @@ class ControllerProduto
             case 'DELETE':
 
                 return $this->_modelProduto->delete();
-                
+
                 break;
 
+            case 'PUT':
+
+                return $this->_modelProduto->update();
+
+                break;
             default:
                 # code...
                 break;
