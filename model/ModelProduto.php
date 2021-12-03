@@ -19,9 +19,9 @@ class ModelProduto
         // Recebimento dos dados do postman:
 
         $this->_idProduto = $dadosProduto->idProduto ?? null;
-        $this->_nome = $dadosProduto->nome;
-        $this->_valor = $dadosProduto->valor;
-        $this->_descricao = $dadosProduto->descricao;
+        $this->_nome = $dadosProduto->nome ?? null;
+        $this->_valor = $dadosProduto->valor ?? null;
+        $this->_descricao = $dadosProduto->descricao ?? null;
         $this->_conexao = $conexao;
     }
 
