@@ -18,7 +18,7 @@ class ModelCategoria
         // Recebimento dos dados do postman:
 
         $this->_idCategoria = $dadosCliente->idCategoria ?? null;
-        $this->_nome = $dadosCliente->_nome ?? null;
+        $this->_nome = $dadosCliente->nome ?? null;
         $this->_conexao = $conexao;
     }
 
@@ -43,5 +43,21 @@ class ModelCategoria
         $stm->execute();
 
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function create()
+    {
+
+        $sql = "INSERT INTO tblCategoria (nome) VALUES (?)";
+
+        $stm = $this->_conexao->prepare($sql);
+
+        $stm->bindValue(1, $this->_nome);
+
+        if ($stm->execute()) {
+            return "Success";
+        } else {
+            return "Error";
+        }
     }
 }

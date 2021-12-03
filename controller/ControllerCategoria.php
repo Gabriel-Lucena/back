@@ -34,6 +34,12 @@ class ControllerCategoria
 
                 break;
 
+            case 'POST':
+
+                return $this->_modelCategoria->create();
+
+                break;
+
             default:
 
                 break;
