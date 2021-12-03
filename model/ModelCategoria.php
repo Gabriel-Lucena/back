@@ -74,4 +74,22 @@ class ModelCategoria
             return "Ocorreu algum erro.";
         }
     }
+
+    public function update()
+    {
+        $sql = "UPDATE tblCategoria SET nome = ? WHERE idCategoria = ?";
+
+        $stm = $this->_conexao->prepare($sql);
+
+        $stm->bindValue(1, $this->_nome);
+        $stm->bindValue(2, $this->_idCategoria);
+
+        if ($stm->execute()) {
+
+            return "Dados alterados com sucesso!";
+        } else {
+
+            return "Ocorreu algum erro.";
+        }
+    }
 }

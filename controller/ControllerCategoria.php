@@ -46,6 +46,13 @@ class ControllerCategoria
 
                 break;
 
+
+            case 'PUT':
+
+                return $this->_modelCategoria->update();
+
+                break;
+
             default:
 
                 break;
