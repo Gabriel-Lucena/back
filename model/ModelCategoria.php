@@ -33,4 +33,15 @@ class ModelCategoria
 
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+    public function findById()
+    {
+        $sql = "SELECT * FROM tblCategoria WHERE idCategoria = ?";
+
+        $stm = $this->_conexao->prepare($sql);
+        $stm->bindValue(1, $this->_idCategoria);
+        $stm->execute();
+
+        return $stm->fetchAll(\PDO::FETCH_ASSOC);
+    }
 }
