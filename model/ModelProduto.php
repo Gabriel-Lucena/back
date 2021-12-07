@@ -8,6 +8,7 @@ class ModelProduto
     private $_nome;
     private $_valor;
     private $_descricao;
+    private $_idCategoria;
 
     public function __construct($conexao)
     {
@@ -22,6 +23,7 @@ class ModelProduto
         $this->_nome = $dadosProduto->nome ?? null;
         $this->_valor = $dadosProduto->valor ?? null;
         $this->_descricao = $dadosProduto->descricao ?? null;
+        $this->_idCategoria = $dadosProduto->idCategoria ?? null;
         $this->_conexao = $conexao;
     }
 
@@ -54,7 +56,9 @@ class ModelProduto
 
         $sql = "INSERT INTO tblProduto (nome,
                                         valor, 
-                                        descricao) VALUES (
+                                        descricao,
+                                        idCategoria) VALUES (
+                                        ?,
                                         ?,
                                         ?,
                                         ?)";
@@ -63,6 +67,7 @@ class ModelProduto
         $stm->bindValue(1, $this->_nome);
         $stm->bindValue(2, $this->_valor);
         $stm->bindValue(3, $this->_descricao);
+        $stm->bindValue(4, $this->_idCategoria);
 
         if ($stm->execute()) {
             return "Success";
@@ -93,7 +98,8 @@ class ModelProduto
         $sql = "UPDATE tblProduto SET
         nome = ?,
         valor = ?,
-        descricao = ?
+        descricao = ?,
+        idCategoria = ?
         WHERE idProduto = ?";
 
         $stm = $this->_conexao->prepare($sql);
@@ -101,7 +107,8 @@ class ModelProduto
         $stm->bindValue(1, $this->_nome);
         $stm->bindValue(2, $this->_valor);
         $stm->bindValue(3, $this->_descricao);
-        $stm->bindValue(4, $this->_idProduto);
+        $stm->bindValue(4, $this->_idCategoria);
+        $stm->bindValue(5, $this->_idProduto);
 
         if ($stm->execute()) {
 
