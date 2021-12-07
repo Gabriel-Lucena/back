@@ -86,8 +86,34 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"nome\": \"Brother\",\r\n    \"valor\": \"-1\",\r\n    \"descricao\": \"AA\",\r\n    \"idCategoria\": 2\r\n}",
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nome",
+									"value": "12312",
+									"type": "text"
+								},
+								{
+									"key": "valor",
+									"value": "131",
+									"type": "text"
+								},
+								{
+									"key": "descricao",
+									"value": "12312",
+									"type": "text"
+								},
+								{
+									"key": "idCategoria",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "fotografia",
+									"type": "file",
+									"src": "/C:/xampp/htdocs/Gabriel/covadobrother/PNG_transparency_demonstration_2.png"
+								}
+							],
 							"options": {
 								"raw": {
 									"language": "json"
@@ -152,8 +178,39 @@
 						"method": "PUT",
 						"header": [],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"idProduto\":2,\r\n    \"nome\": \"Brother\",\r\n    \"valor\": \"-1\",\r\n    \"descricao\": \"AA\",\r\n    \"idCategoria\": 1\r\n}",
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "idProduto",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "nome",
+									"value": "Brother",
+									"type": "text"
+								},
+								{
+									"key": "valor",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "descricao",
+									"value": "AA",
+									"type": "text"
+								},
+								{
+									"key": "idCategoria",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "fotografia",
+									"type": "file",
+									"src": []
+								}
+							],
 							"options": {
 								"raw": {
 									"language": "json"
