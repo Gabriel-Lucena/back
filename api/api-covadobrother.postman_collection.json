@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "2ee9e6ce-a51f-436e-9054-a288a2baecbf",
+		"_postman_id": "17007ede-9e26-4eb5-b66c-0d29c646fd8a",
 		"name": "api-covadobrother",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -87,7 +87,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nome\": \"Brother\",\r\n    \"valor\": \"-1\",\r\n    \"descricao\": \"AA\"\r\n}",
+							"raw": "{\r\n    \"nome\": \"Brother\",\r\n    \"valor\": \"-1\",\r\n    \"descricao\": \"AA\",\r\n    \"idCategoria\": 2\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -153,7 +153,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nome\": \"Brother\",\r\n    \"valor\": \"-1\",\r\n    \"descricao\": \"AA\",\r\n    \"idProduto\": 2\r\n}",
+							"raw": "{\r\n    \"idProduto\":2,\r\n    \"nome\": \"Brother\",\r\n    \"valor\": \"-1\",\r\n    \"descricao\": \"AA\",\r\n    \"idCategoria\": 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
