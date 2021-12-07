@@ -84,19 +84,8 @@ class ModelProduto
                                         ?)";
 
 
-        // Recupera o nome do arquivo pelo post
-
-        $nomeArquivo = $this->_fotografia["name"];
-
-        // Divide tudo pelo .
-
-        $dividido = explode(".", $nomeArquivo);
-
-        // Recupera o que houver após o último ponto
-
-        $extensao = "." . $dividido[count($dividido) - 1];
-
-        $novoNomeArquivo = md5(microtime()) . "$extensao";
+        $extensao = pathinfo($this->_fotografia["name"], PATHINFO_EXTENSION);
+        $novoNomeArquivo = md5(microtime()) . ".$extensao";
         move_uploaded_file($_FILES["fotografia"]["tmp_name"], "../img/$novoNomeArquivo");
 
         $stm = $this->_conexao->prepare($sql);
@@ -108,7 +97,7 @@ class ModelProduto
         $stm->bindValue(5, $novoNomeArquivo);
 
         if ($stm->execute()) {
-            return array("Success", $this->_fotografia, $stm, $extensao, $novoNomeArquivo);
+            return "Success";
         } else {
             return "Error";
         }
