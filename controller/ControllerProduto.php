@@ -35,6 +35,11 @@ class ControllerProduto
 
             case 'POST':
 
+                if (isset($_POST["idProduto"])) {
+                    
+                    return $this->_modelProduto->update();
+                }
+                
                 return $this->_modelProduto->create();
 
                 break;

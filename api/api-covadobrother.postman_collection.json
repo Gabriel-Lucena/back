@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "17007ede-9e26-4eb5-b66c-0d29c646fd8a",
+		"_postman_id": "9407d029-0dda-4a48-82bf-277f14075a90",
 		"name": "api-covadobrother",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -111,7 +111,7 @@
 								{
 									"key": "fotografia",
 									"type": "file",
-									"src": "/C:/xampp/htdocs/Gabriel/covadobrother/PNG_transparency_demonstration_2.png"
+									"src": "/C:/Users/21192954/Desktop/png-clipart-parametric-surface-parametric-equation-area-angle-angle-material.png"
 								}
 							],
 							"options": {
@@ -175,19 +175,19 @@
 				{
 					"name": "update",
 					"request": {
-						"method": "PUT",
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
 								{
 									"key": "idProduto",
-									"value": "1",
+									"value": "3",
 									"type": "text"
 								},
 								{
 									"key": "nome",
-									"value": "Brother",
+									"value": "Brother 2sdfsdfadasd",
 									"type": "text"
 								},
 								{
@@ -208,7 +208,7 @@
 								{
 									"key": "fotografia",
 									"type": "file",
-									"src": []
+									"src": "/C:/Users/21192954/Desktop/DI_vecfield.jpg"
 								}
 							],
 							"options": {

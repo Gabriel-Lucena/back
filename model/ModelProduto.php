@@ -122,11 +122,25 @@ class ModelProduto
     public function update()
     {
 
+        $this->_idProduto = $_POST["idProduto"];
+        $this->_idCategoria = $_POST["idCategoria"];
+        $this->_nome = $_POST["nome"];
+        $this->_valor = $_POST["valor"];
+        $this->_descricao = $_POST["descricao"];
+        $this->_fotografia = $_FILES["fotografia"];
+        
+        // Relativo a imagem
+
+        $extensao = pathinfo($this->_fotografia["name"], PATHINFO_EXTENSION);
+        $novoNomeArquivo = md5(microtime()) . ".$extensao";
+        move_uploaded_file($_FILES["fotografia"]["tmp_name"], "../img/$novoNomeArquivo");
+
         $sql = "UPDATE tblProduto SET
         nome = ?,
         valor = ?,
         descricao = ?,
-        idCategoria = ?
+        idCategoria = ?,
+        fotografia = ?
         WHERE idProduto = ?";
 
         $stm = $this->_conexao->prepare($sql);
@@ -135,14 +149,21 @@ class ModelProduto
         $stm->bindValue(2, $this->_valor);
         $stm->bindValue(3, $this->_descricao);
         $stm->bindValue(4, $this->_idCategoria);
-        $stm->bindValue(5, $this->_idProduto);
+        $stm->bindValue(5, $novoNomeArquivo);
+        $stm->bindValue(6, $this->_idProduto);
 
         if ($stm->execute()) {
 
-            return "Dados alterados com sucesso!";
+            return array(
+                "Dados alterados com sucesso!", $this->_nome, $this->_valor, $this->_idCategoria,
+                $this->_descricao, $this->_idCategoria, $this->_fotografia["name"]
+            );
         } else {
 
-            return "Ocorreu algum erro.";
+            return array(
+                "Ocorreu algum erro.", $this->_nome, $this->_valor,
+                $this->_idCategoria, $this->_descricao, $this->_idCategoria, $this->_fotografia["name"]
+            );
         }
     }
 }
