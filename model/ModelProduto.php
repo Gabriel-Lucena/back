@@ -128,20 +128,37 @@ class ModelProduto
         $this->_valor = $_POST["valor"];
         $this->_descricao = $_POST["descricao"];
         $this->_fotografia = $_FILES["fotografia"];
-        
+
         // Relativo a imagem
+
+        $sql = "SELECT fotografia FROM tblProduto WHERE idProduto = ?";
+        $stm = $this->_conexao->prepare($sql);
+        $stm->bindValue(1, $this->_idProduto);
+
+        $stm->execute();
+
+        $nomeFoto = $stm->fetchAll(\PDO::FETCH_ASSOC);
+
+        // Exclusão da imagem antiga
+
+        if ($nomeFoto[0]["fotografia"] != null) {
+
+            unlink("../img/" . $nomeFoto[0]["fotografia"]);
+        }
+
+        unlink("../img/" . $nomeFoto[0]["fotografia"]);
 
         $extensao = pathinfo($this->_fotografia["name"], PATHINFO_EXTENSION);
         $novoNomeArquivo = md5(microtime()) . ".$extensao";
         move_uploaded_file($_FILES["fotografia"]["tmp_name"], "../img/$novoNomeArquivo");
 
         $sql = "UPDATE tblProduto SET
-        nome = ?,
-        valor = ?,
-        descricao = ?,
-        idCategoria = ?,
-        fotografia = ?
-        WHERE idProduto = ?";
+            nome = ?,
+            valor = ?,
+            descricao = ?,
+            idCategoria = ?,
+            fotografia = ?
+            WHERE idProduto = ?";
 
         $stm = $this->_conexao->prepare($sql);
 
